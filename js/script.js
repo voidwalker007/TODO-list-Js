@@ -1,8 +1,9 @@
+localStorage.setItem("data","[]");
 function addTask() {
     //take input from user
     let inputval=document.getElementById("task_input").value;
     //store that task to array in localstorage
-    localStorage.setItem("data","[]");
+    /* localStorage.setItem("data","[]"); on everycall it will set array empty hence only one item will display so use it outside of the fxn */ 
     
 
     //converting the data from string to object 
@@ -11,9 +12,10 @@ function addTask() {
 
         //push new task into array
         oldData.push(inputval);
+        console.log(oldData)
         
     //save that array to local storage
-    localStorage.setItem("data",JSON.stringify(oldData));
+    let newdata=localStorage.setItem("data",JSON.stringify(oldData));
     
     //empty input box
     inputval="";
@@ -29,12 +31,15 @@ function updateData(){
     //get data that is going to be updated on html
 
  let oldData=JSON.parse(localStorage.getItem("data"));
+
+ 
     //generate dynamic data or html on webpage
     let length=oldData.length;
     console.log(length)
     let html="";
-    for(i=0;i<length;i++){
-        html +=`<li class="list-group-item list-group-item-primary">${oldData[i]}<span class="btn btn-danger float-end btn-sm">Remove</span></li>`;
+    for(var i=length;i>=0;i--){
+        console.log(oldData[i])
+        html=html+`<li class="list-group-item list-group-item-primary">${oldData[i]}<span class="btn btn-danger float-end btn-sm">Remove</span></li>`;
        
     }
     listbody.innerHTML=html;
