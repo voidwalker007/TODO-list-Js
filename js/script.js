@@ -1,4 +1,17 @@
-localStorage.setItem("data","[]");
+/* localStorage.setItem("data","[]"); it will set array to empty*/
+function Reset(){
+   
+    var ans=confirm("Are you sure to clear data");
+    console.log(ans);
+    if(ans==true)
+    {
+        localStorage.setItem("data","[]");
+        
+    }
+    
+}
+
+updateData();
 function addTask() {
     //take input from user
     let inputval=document.getElementById("task_input").value;
@@ -18,7 +31,7 @@ function addTask() {
     let newdata=localStorage.setItem("data",JSON.stringify(oldData));
     
     //empty input box
-    inputval="";
+    inputval="";console.log(inputval)
 
     //update input task on list
     updateData();
@@ -37,9 +50,9 @@ function updateData(){
     let length=oldData.length;
     console.log(length)
     let html="";
-    for(var i=length;i>=0;i--){
+    for(var i=length-1;i>=0;i--){
         console.log(oldData[i])
-        html=html+`<li class="list-group-item list-group-item-primary">${oldData[i]}<span class="btn btn-danger float-end btn-sm">Remove</span></li>`;
+        html=html+`<li class="list-group-item list-group-item-primary">${i+1} &nbsp;${oldData[i]}<span class="btn btn-danger float-end btn-sm">Remove</span></li>`;
        
     }
     listbody.innerHTML=html;

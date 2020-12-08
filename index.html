@@ -11,8 +11,13 @@
     
     <section class="container">
         <header>
-            <div class="d-flex justify-content-center">
-                <h1>Todo List</h1>
+            <div class="row">
+                <div class="d-flex justify-content-center col-md-8">
+                    <h1>Todo List</h1>
+                </div>
+                <div class="reset col-md-4">
+                    <button type="reset" class="btn btn-danger btn-sm" onclick="Reset()"> Reset</button>
+                </div>
             </div>
            <div class="row">
             <div class="col-md-8">
@@ -21,9 +26,11 @@
             </div>
             <div class="col-md-4">
                 <button type="button" class="btn btn-success" onclick="addTask()">Add item</button>
+            
             </div>
            </div>
         </header>
+        <br>
         <main>
             <div class="data_part row">
                 <div class="col-md-8">
